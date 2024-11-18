@@ -109,7 +109,7 @@ class YahooFinanceProcessor:
             while (
                 current_tic_start_date <= end_date
             ):  # downloading daily to workaround yfinance only allowing  max 7 calendar (not trading) days of 1 min data per single download
-                print(f"Downloading data for ticker: {tic}, start: {current_tic_start_date}, end: {current_tic_start_date + delta}, interval: {self.time_interval}, proxy: {proxy}")
+                # print(f"Downloading data for ticker: {tic}, start: {current_tic_start_date}, end: {current_tic_start_date + delta}, interval: {self.time_interval}, proxy: {proxy}")
                 # sys.stdout.flush()
                 # logging.basicConfig(level=logging.DEBUG)
                 # logger = logging.getLogger(__name__)
