@@ -81,6 +81,7 @@ class YahooFinanceProcessor:
             raise ValueError("wrong time_interval")
 
         return time_interval
+        
 
     def download_data(
         self,
@@ -91,6 +92,7 @@ class YahooFinanceProcessor:
         proxy: str | dict = None,
     ) -> pd.DataFrame:
         print(f"FFFFFFFFFFFFFFFFFFFFF")
+        raise ValueError("Debugging: Is the function being executed?")
         time_interval = self.convert_interval(time_interval)
     
         self.start = start_date
