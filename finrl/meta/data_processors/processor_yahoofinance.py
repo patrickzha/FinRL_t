@@ -102,14 +102,14 @@ class YahooFinanceProcessor:
         # Download and save the data in a pandas DataFrame
         start_date = pd.Timestamp(start_date)
         end_date = pd.Timestamp(end_date)
-        delta = timedelta(days=7)
+        delta = timedelta(days=3)
         data_df = pd.DataFrame()
         for tic in ticker_list:
             current_tic_start_date = start_date
             while (
                 current_tic_start_date <= end_date
             ):  # downloading daily to workaround yfinance only allowing  max 7 calendar (not trading) days of 1 min data per single download
-                print(f"Downloading data for ticker: {tic}, start: {current_tic_start_date}, end: {current_tic_start_date + delta}, interval: {self.time_interval}, proxy: {proxy}")
+                # print(f"Downloading data for ticker: {tic}, start: {current_tic_start_date}, end: {current_tic_start_date + delta}, interval: {self.time_interval}, proxy: {proxy}")
                 
                 temp_df = yf.download(
                     tic,
