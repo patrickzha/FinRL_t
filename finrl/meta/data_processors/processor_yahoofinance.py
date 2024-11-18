@@ -21,6 +21,7 @@ import pytz
 import yfinance as yf
 from stockstats import StockDataFrame as Sdf
 
+import sys
 
 class YahooFinanceProcessor:
     """Provides methods for retrieving daily stock data from
@@ -104,7 +105,7 @@ class YahooFinanceProcessor:
                 current_tic_start_date <= end_date
             ):  # downloading daily to workaround yfinance only allowing  max 7 calendar (not trading) days of 1 min data per single download
                 print(f"Downloading data for ticker: {tic}, start: {current_tic_start_date}, end: {current_tic_start_date + delta}, interval: {self.time_interval}, proxy: {proxy}")
-
+                sys.stdout.flush()
                 temp_df = yf.download(
                     tic,
                     start=current_tic_start_date,
