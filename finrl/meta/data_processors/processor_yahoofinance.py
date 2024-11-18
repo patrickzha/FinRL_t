@@ -103,6 +103,7 @@ class YahooFinanceProcessor:
             while (
                 current_tic_start_date <= end_date
             ):  # downloading daily to workaround yfinance only allowing  max 7 calendar (not trading) days of 1 min data per single download
+                print (f"tic:{tic},start:{start},end:{end},interval:{interval},proxy:{proxy}")
                 temp_df = yf.download(
                     tic,
                     start=current_tic_start_date,
