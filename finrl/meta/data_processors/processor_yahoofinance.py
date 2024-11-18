@@ -91,8 +91,8 @@ class YahooFinanceProcessor:
         time_interval: str,
         proxy: str | dict = None,
     ) -> pd.DataFrame:
-        print(f"FFFFFFFFFFFFFFFFFFFFF")
-        raise ValueError("Debugging: Is the function being executed?")
+        # print(f"FFFFFFFFFFFFFFFFFFFFF")
+        # raise ValueError("Debugging: Is the function being executed?")
         time_interval = self.convert_interval(time_interval)
     
         self.start = start_date
@@ -110,11 +110,11 @@ class YahooFinanceProcessor:
                 current_tic_start_date <= end_date
             ):  # downloading daily to workaround yfinance only allowing  max 7 calendar (not trading) days of 1 min data per single download
                 print(f"Downloading data for ticker: {tic}, start: {current_tic_start_date}, end: {current_tic_start_date + delta}, interval: {self.time_interval}, proxy: {proxy}")
-                sys.stdout.flush()
-                logging.basicConfig(level=logging.DEBUG)
-                logger = logging.getLogger(__name__)
+                # sys.stdout.flush()
+                # logging.basicConfig(level=logging.DEBUG)
+                # logger = logging.getLogger(__name__)
 
-                logger.debug(f"Downloading ticker: {tic}, Start: {current_tic_start_date}, End: {current_tic_start_date + delta}")
+                # logger.debug(f"Downloading ticker: {tic}, Start: {current_tic_start_date}, End: {current_tic_start_date + delta}")
 
                 temp_df = yf.download(
                     tic,
