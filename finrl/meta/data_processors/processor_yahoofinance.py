@@ -88,8 +88,9 @@ class YahooFinanceProcessor:
         time_interval: str,
         proxy: str | dict = None,
     ) -> pd.DataFrame:
+        print(f"FFFFFFFFFFFFFFFFFFFFF")
         time_interval = self.convert_interval(time_interval)
-
+    
         self.start = start_date
         self.end = end_date
         self.time_interval = time_interval
