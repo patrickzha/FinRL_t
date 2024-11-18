@@ -22,6 +22,8 @@ import yfinance as yf
 from stockstats import StockDataFrame as Sdf
 
 import sys
+import logging
+
 
 class YahooFinanceProcessor:
     """Provides methods for retrieving daily stock data from
@@ -107,6 +109,11 @@ class YahooFinanceProcessor:
             ):  # downloading daily to workaround yfinance only allowing  max 7 calendar (not trading) days of 1 min data per single download
                 print(f"Downloading data for ticker: {tic}, start: {current_tic_start_date}, end: {current_tic_start_date + delta}, interval: {self.time_interval}, proxy: {proxy}")
                 sys.stdout.flush()
+                logging.basicConfig(level=logging.DEBUG)
+                logger = logging.getLogger(__name__)
+
+                logger.debug(f"Downloading ticker: {tic}, Start: {current_tic_start_date}, End: {current_tic_start_date + delta}")
+
                 temp_df = yf.download(
                     tic,
                     start=current_tic_start_date,
