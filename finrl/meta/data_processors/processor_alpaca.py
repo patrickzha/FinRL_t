@@ -356,14 +356,23 @@ class AlpacaProcessor:
         return price_array, tech_array, turbulence_array
 
     def get_trading_days(self, start, end):
-        nyse = tc.get_calendar("NYSE")
-        df = nyse.sessions_in_range(
-            pd.Timestamp(start).tz_localize(None), pd.Timestamp(end).tz_localize(None)
-        )
-        trading_days = []
-        for day in df:
-            trading_days.append(str(day)[:10])
+        # nyse = tc.get_calendar("NYSE")
+        # df = nyse.sessions_in_range(
+        #     pd.Timestamp(start).tz_localize(None), pd.Timestamp(end).tz_localize(None)
+        # )
+        # trading_days = []
+        # for day in df:
+        #     trading_days.append(str(day)[:10])
 
+        nyse = tc.get_calendar("NYSE")
+        # Get the schedule between the start and end dates
+        schedule_df = nyse.schedule(
+            start_date=pd.Timestamp(start).tz_localize(None),
+            end_date=pd.Timestamp(end).tz_localize(None)
+        )
+        # Extract the trading days from the index of the schedule DataFrame
+        trading_days = [str(day)[:10] for day in schedule_df.index]
+    
         return trading_days
 
     def fetch_latest_data(
